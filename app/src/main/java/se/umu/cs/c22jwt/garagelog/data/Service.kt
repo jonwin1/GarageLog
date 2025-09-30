@@ -32,7 +32,7 @@ import java.util.UUID
 data class Service(
     @PrimaryKey val id: UUID,
     val title: String,
-    @ColumnInfo(name = "registration_number") val registrationNumber: String,
+    @ColumnInfo(name = "registration_number", index = true) val registrationNumber: String,
     val date: Date,
     val mileage: Int,
     val cost: Int,

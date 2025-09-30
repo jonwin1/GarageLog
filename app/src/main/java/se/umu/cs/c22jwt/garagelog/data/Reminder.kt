@@ -35,7 +35,7 @@ import java.util.UUID
 data class Reminder(
     @PrimaryKey val id: UUID,
     val title: String,
-    @ColumnInfo(name = "registration_number") val registrationNumber: String,
+    @ColumnInfo(name = "registration_number", index = true) val registrationNumber: String,
     val mileage: Int,
     val date: Date,
     val mileageInterval: Int,
