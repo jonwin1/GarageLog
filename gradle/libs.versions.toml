@@ -1,5 +1,6 @@
 [versions]
 agp = "8.13.0"
+ksp = "2.2.20-2.0.3"
 coilCompose = "3.3.0"
 hiltAndroid = "2.57.2"
 kotlin = "2.2.20"
@@ -46,4 +47,5 @@ androidx-compose-material-icons-core = { group = "androidx.compose.material", na
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
