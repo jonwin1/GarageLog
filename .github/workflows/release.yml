@@ -40,29 +40,20 @@ jobs:
           java-version: 24
           cache: "gradle"
 
-      - name: Build release APK
+      - name: Build APK
         run: ./gradlew assembleRelease
 
-      - name: Decode keystore
-        run: echo "${{ secrets.ANDROID_KEYSTORE }}" | base64 -d > my-release-key.jks
-
       - name: Sign APK
-        run: |
-          jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
-            -keystore my-release-key.jks -storepass "${{ secrets.KEYSTORE_PASSWORD }}" \
-            -keypass "${{ secrets.GARAGE_LOG_ALIAS_PASSWORD }}" \
-            app/build/outputs/apk/release/app-release-unsigned.apk ${{ secrets.GARAGE_LOG_ALIAS }}
-
-      - name: Verify signature
-        run: jarsigner -verify -verbose -certs app/build/outputs/apk/release/app-release-unsigned.apk
-
-      - name: Align APK
-        run: |
-          $ANDROID_HOME/build-tools/34.0.0/zipalign -v 4 \
-            app/build/outputs/apk/release/app-release-unsigned.apk \
-            app/build/outputs/apk/release/app-release.apk
+        id: sign_apk
+        uses: r0adkll/sign-android-release/v1
+        with:
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.ANDROID_KEYSTORE }}
+          alias: ${{ secrets.GARAGE_LOG_ALIAS }}
+          keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+          keyPassword: ${{ secrets.GARAGE_LOG_ALIAS_PASSWORD }}
 
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: app/build/outputs/apk/release/app-release.apk
+          files: ${{ steps.sign_apk.outputs.signedReleaseFile }}
