@@ -47,8 +47,8 @@ jobs:
       - name: Sign APK
         run: |
           jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
-            -keystore my-release-key.jks -storepass ${{ secrets.KEYSTORE_PASSWORD }} \
-            -keypass ${{ secrets.GARAGE_LOG_ALIAS_PASSWORD }} \
+            -keystore my-release-key.jks -storepass "${{ secrets.KEYSTORE_PASSWORD }}" \
+            -keypass "${{ secrets.GARAGE_LOG_ALIAS_PASSWORD }}" \
             app/build/outputs/apk/release/app-release-unsigned.apk ${{ secrets.GARAGE_LOG_ALIAS }}
 
       - name: Verify signature
