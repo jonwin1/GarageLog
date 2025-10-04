@@ -23,8 +23,8 @@ jobs:
       - name: Run unit tests
         run: ./gradlew clean testDebug
 
-  build:
-    name: Build Release APK
+  release:
+    name: Build & Release APK
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -59,14 +59,6 @@ jobs:
           $ANDROID_HOME/build-tools/34.0.0/zipalign -v 4 \
             app/build/outputs/apk/release/app-release-unsigned.apk \
             app/build/outputs/apk/release/app-release.apk
-
-  release:
-    name: Release APK
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
       - name: Release
         uses: softprops/action-gh-release@v2
