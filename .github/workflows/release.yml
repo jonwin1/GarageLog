@@ -64,3 +64,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: app/build/outputs/apk/release/GarageLog-${GITHUB_REF_NAME}.apk
+          generate_release_notes: true
