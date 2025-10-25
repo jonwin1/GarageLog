@@ -3,10 +3,10 @@
 ## Introduction
 
 **GarageLog** helps you effortlessly keep track of all your vehicles in one
-place. Record service history, add important notes, and set reminders for upcoming
-maintenance or other events. Whether you're an enthusiast or just want to keep
-up with regular maintenance, GarageLog makes it easy to keep every vehicle in
-top condition.
+place. Record service history, add important notes, and set reminders for
+upcoming maintenance or other events. Whether you're an enthusiast or just want
+to keep up with regular maintenance, GarageLog makes it easy to keep every
+vehicle in top condition.
 
 ## Features
 
@@ -52,6 +52,5 @@ Android application development. The assignment was to design and build a fully
 functional Android app of our choice, demonstrating the concepts learned
 throughout the course.
 
-A detailed project report (in Swedish) can be found
-[here](https://github.com/jonwin1/GarageLog/rapport.pdf). It covers the app’s
-features, architecture, and design decisions in depth.
+A detailed project report (in Swedish) can be found [here](./rapport.pdf). It
+covers the app’s features, architecture, and design decisions in depth.
