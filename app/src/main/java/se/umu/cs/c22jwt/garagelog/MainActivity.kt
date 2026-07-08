@@ -56,7 +56,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun NavigationComponent(navController: NavHostController) {
     NavHost(
-        navController = navController, startDestination = Routes.VehicleListScreen.route
+        navController = navController,
+        startDestination = Routes.VehicleListScreen.route,
     ) {
         composable(Routes.VehicleListScreen.route) {
             val viewModel = hiltViewModel<VehicleListViewModel>()
@@ -65,13 +66,15 @@ private fun NavigationComponent(navController: NavHostController) {
 
         navigation(
             route = Routes.VehicleParent.route,
-            startDestination = "${Routes.VehicleScreen.route}?id={id}"
+            startDestination = "${Routes.VehicleScreen.route}?id={id}",
         ) {
             composable(
                 route = "${Routes.VehicleScreen.route}?id={id}",
-                arguments = listOf(navArgument("id") {
-                    type = NavType.StringType
-                })
+                arguments = listOf(
+                    navArgument("id") {
+                        type = NavType.StringType
+                    },
+                )
             ) { entry ->
                 val parentEntry = remember(entry) {
                     navController.getBackStackEntry(Routes.VehicleParent.route)
@@ -79,18 +82,21 @@ private fun NavigationComponent(navController: NavHostController) {
                 val registrationNumber = entry.arguments?.getString("id") ?: ""
                 // Create a new ViewModel if none exists, otherwise get it from parent
                 val viewModel = hiltViewModel<VehicleViewModel, VehicleViewModel.Factory>(
-                    viewModelStoreOwner = parentEntry, creationCallback = { factory ->
-                        factory.create(registrationNumber)
-                    })
+                    viewModelStoreOwner = parentEntry
+                ) { factory ->
+                    factory.create(registrationNumber)
+                }
                 VehicleScreen(viewModel, navController)
                 StatusBarProtection()
             }
 
             composable(
                 route = "${Routes.EditVehicleScreen.route}?id={id}",
-                arguments = listOf(navArgument("id") {
-                    type = NavType.StringType
-                })
+                arguments = listOf(
+                    navArgument("id") {
+                        type = NavType.StringType
+                    },
+                )
             ) { entry ->
                 val parentEntry = remember(entry) {
                     navController.getBackStackEntry(Routes.VehicleParent.route)
@@ -98,17 +104,20 @@ private fun NavigationComponent(navController: NavHostController) {
                 val registrationNumber = entry.arguments?.getString("id") ?: ""
                 // Create a new ViewModel if none exists, otherwise get it from parent
                 val viewModel = hiltViewModel<VehicleViewModel, VehicleViewModel.Factory>(
-                    viewModelStoreOwner = parentEntry, creationCallback = { factory ->
-                        factory.create(registrationNumber)
-                    })
+                    viewModelStoreOwner = parentEntry
+                ) { factory ->
+                    factory.create(registrationNumber)
+                }
                 EditVehicleScreen(viewModel) { navController.navigateUp() }
             }
         }
 
         composable(
-            route = "${Routes.EditServiceScreen.route}?regN={regN}&id={id}", arguments = listOf(
+            route = "${Routes.EditServiceScreen.route}?regN={regN}&id={id}",
+            arguments = listOf(
                 navArgument("regN") { type = NavType.StringType },
-                navArgument("id") { type = NavType.StringType })
+                navArgument("id") { type = NavType.StringType },
+            )
         ) { entry ->
             val registrationNumber = entry.arguments?.getString("regN") ?: ""
             val serviceIdString = entry.arguments?.getString("id") ?: ""
@@ -117,34 +126,35 @@ private fun NavigationComponent(navController: NavHostController) {
             } else {
                 UUID.randomUUID()
             }
-            val viewModel = hiltViewModel<ServiceViewModel, ServiceViewModel.Factory>(
-                creationCallback = { factory ->
-                    factory.create(registrationNumber, serviceId)
-                })
+            val viewModel = hiltViewModel<ServiceViewModel, ServiceViewModel.Factory> { factory ->
+                factory.create(registrationNumber, serviceId)
+            }
             EditServiceScreen(viewModel) { navController.navigateUp() }
         }
 
         composable(
-            route = "${Routes.ServiceHistoryScreen.route}?regN={regN}", arguments = listOf(
-                navArgument("regN") { type = NavType.StringType })
+            route = "${Routes.ServiceHistoryScreen.route}?regN={regN}",
+            arguments = listOf(
+                navArgument("regN") { type = NavType.StringType },
+            )
         ) { entry ->
             val registrationNumber = entry.arguments?.getString("regN") ?: ""
-            val viewModel = hiltViewModel<VehicleViewModel, VehicleViewModel.Factory>(
-                creationCallback = { factory ->
-                    factory.create(registrationNumber)
-                })
+            val viewModel = hiltViewModel<VehicleViewModel, VehicleViewModel.Factory> { factory ->
+                factory.create(registrationNumber)
+            }
             ServiceHistoryScreen(viewModel, navController)
         }
 
         composable(
-            route = "${Routes.RemindersScreen.route}?regN={regN}", arguments = listOf(
-                navArgument("regN") { type = NavType.StringType })
+            route = "${Routes.RemindersScreen.route}?regN={regN}",
+            arguments = listOf(
+                navArgument("regN") { type = NavType.StringType },
+            )
         ) { entry ->
             val registrationNumber = entry.arguments?.getString("regN") ?: ""
-            val viewModel = hiltViewModel<VehicleViewModel, VehicleViewModel.Factory>(
-                creationCallback = { factory ->
-                    factory.create(registrationNumber)
-                })
+            val viewModel = hiltViewModel<VehicleViewModel, VehicleViewModel.Factory> { factory ->
+                factory.create(registrationNumber)
+            }
             RemindersScreen(viewModel, navController)
         }
 
@@ -153,7 +163,8 @@ private fun NavigationComponent(navController: NavHostController) {
             arguments = listOf(
                 navArgument("regN") { type = NavType.StringType },
                 navArgument("id") { type = NavType.StringType },
-                navArgument("mileage") { type = NavType.IntType })
+                navArgument("mileage") { type = NavType.IntType },
+            )
         ) { entry ->
             val registrationNumber = entry.arguments?.getString("regN") ?: ""
             val reminderIdString = entry.arguments?.getString("id") ?: ""
@@ -165,10 +176,9 @@ private fun NavigationComponent(navController: NavHostController) {
                 UUID.randomUUID()
             }
 
-            val viewModel = hiltViewModel<ReminderViewModel, ReminderViewModel.Factory>(
-                creationCallback = { factory ->
-                    factory.create(registrationNumber, reminderId, mileage)
-                })
+            val viewModel = hiltViewModel<ReminderViewModel, ReminderViewModel.Factory> { factory ->
+                factory.create(registrationNumber, reminderId, mileage)
+            }
             EditReminderScreen(viewModel) { navController.navigateUp() }
         }
     }

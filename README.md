@@ -24,18 +24,18 @@ your Android device.
 
 ## Screenshots
 
-| Main Page | Vehicle Page | Edit Vehicle |
-|------------|---------------|---------------|
+| Main Page                                                                         | Vehicle Page                                                                 | Edit Vehicle                                     |
+|-----------------------------------------------------------------------------------|------------------------------------------------------------------------------|--------------------------------------------------|
 | ![Main page of the application, showing a list of vehicles.](./images/garage.png) | ![Vehicle page showing information and quick actions.](./images/vehicle.png) | ![Edit vehicle page.](./images/edit_vehicle.png) |
 
-| Reminders | Edit Reminder |
-|-----------|---------------|
+| Reminders                                                              | Edit Reminder                                      |
+|------------------------------------------------------------------------|----------------------------------------------------|
 | ![Reminders page showing a list of reminders.](./images/reminders.png) | ![Edit reminder page.](./images/edit_reminder.png) |
 
 
 
-| Service History | New Service |
-|-----------------|-------------|
+| Service History                                                      | New Service                                          |
+|----------------------------------------------------------------------|------------------------------------------------------|
 | ![Service history page for a vehicle.](./images/service_history.png) | ![New service entry page.](./images/new_service.png) |
 
 ## TODO

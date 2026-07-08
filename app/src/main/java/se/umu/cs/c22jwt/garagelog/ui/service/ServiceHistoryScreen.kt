@@ -36,8 +36,8 @@ import se.umu.cs.c22jwt.garagelog.ui.components.DeleteDialog
 import se.umu.cs.c22jwt.garagelog.ui.components.ExpandableListItem
 import se.umu.cs.c22jwt.garagelog.ui.vehicle.VehicleViewModel
 import java.text.SimpleDateFormat
-import java.util.Locale
 import java.util.UUID
+import androidx.compose.ui.platform.LocalLocale
 
 /**
  * Compose screen for viewing all service entries for a vehicle.
@@ -134,7 +134,7 @@ fun ServiceList(
     onDelete: (Service) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val dateFormatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    val dateFormatter = SimpleDateFormat("yyyy-MM-dd", LocalLocale.current.platformLocale)
 
     LazyColumn(
         modifier = modifier

@@ -241,7 +241,7 @@ fun EditVehicleScreen(
                             Icon(
                                 Icons.Default.Warning, "Warning icon"
                             )
-                        } else null
+                        }
                     })
             }
 
@@ -274,7 +274,7 @@ fun EditVehicleScreen(
                     trailingIcon = {
                         if (registrationNumberError != null) {
                             Icon(Icons.Default.Warning, "Warning icon")
-                        } else null
+                        }
                     })
             }
 
@@ -388,7 +388,7 @@ fun AddImageButton(
 /**
  * Top bar for the edit vehicle screen.
  *
- * @param scrollBehavior    Scroll behaviour of the top bar.
+ * @param scrollBehavior    Scroll behavior of the top bar.
  * @param isNewVehicle      Whether it is a new vehicle or not.
  * @param enableSave        Whether to enable the save button
  * @param onClose           Called when the close button is pressed.

@@ -54,8 +54,8 @@ import kotlinx.coroutines.launch
 import se.umu.cs.c22jwt.garagelog.data.Service
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
 import java.util.UUID
+import androidx.compose.ui.platform.LocalLocale
 
 /**
  * Compose screen for editing a service.
@@ -81,7 +81,7 @@ fun EditServiceScreen(
 
     var showDateDialog by remember { mutableStateOf(false) }
     val datePickerState = rememberDatePickerState(initialDisplayMode = DisplayMode.Picker)
-    val dateFormatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    val dateFormatter = SimpleDateFormat("yyyy-MM-dd", LocalLocale.current.platformLocale)
 
     var title by rememberSaveable { mutableStateOf("") }
     var titleIsValid by rememberSaveable { mutableStateOf(true) }
@@ -183,7 +183,7 @@ fun EditServiceScreen(
                     trailingIcon = {
                         if (!titleIsValid) {
                             Icon(Icons.Default.Warning, "Warning icon")
-                        } else null
+                        }
                     })
             }
 
@@ -339,7 +339,7 @@ fun EditServiceScreen(
 /**
  * Top bar for the edit service screen.
  *
- * @param scrollBehavior    Scroll behaviour of the top bar.
+ * @param scrollBehavior    Scroll behavior of the top bar.
  * @param isNewService      Whether it is a new service or not.
  * @param enableSave        Whether to enable the save button
  * @param onClose           Called when the close button is pressed.

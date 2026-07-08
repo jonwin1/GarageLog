@@ -114,7 +114,7 @@ class ServiceViewModel @AssistedInject constructor(
     /**
      * Delete a reminder from the database.
      *
-     * @param id    Id of the reminder to delete.
+     * @param id    ID of the reminder to delete.
      */
     fun deleteReminder(id: UUID) = viewModelScope.launch {
         repository.deleteReminder(id)

@@ -157,7 +157,7 @@ fun EditReminderScreen(
                     trailingIcon = {
                         if (!titleIsValid) {
                             Icon(Icons.Default.Warning, "Warning icon")
-                        } else null
+                        }
                     })
             }
 
@@ -293,7 +293,7 @@ fun EditReminderScreen(
 /**
  * Top bar for the edit reminder screen.
  *
- * @param scrollBehavior    Scroll behaviour of the top bar.
+ * @param scrollBehavior    Scroll behavior of the top bar.
  * @param isNewReminder     Whether it is a new reminder or not.
  * @param enableSave        Whether to enable the save button
  * @param onClose           Called when the close button is pressed.

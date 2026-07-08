@@ -168,7 +168,7 @@ class VehicleViewModel @AssistedInject constructor(
     /**
      * Delete a service.
      *
-     * @param id    Id of the service to delete.
+     * @param id    ID of the service to delete.
      */
     fun deleteService(id: UUID) = viewModelScope.launch {
         repository.deleteService(id)
@@ -177,7 +177,7 @@ class VehicleViewModel @AssistedInject constructor(
     /**
      * Delete a reminder.
      *
-     * @param id    Id of the reminder to delete.
+     * @param id    ID of the reminder to delete.
      */
     fun deleteReminder(id: UUID) = viewModelScope.launch {
         repository.deleteReminder(id)

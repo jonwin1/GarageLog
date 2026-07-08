@@ -338,7 +338,7 @@ fun VehicleBottomSheet(
  *
  * @param onNavigateBack    Called when pressing the back button.
  * @param onMenu            Called to open a menu with more controls for the vehicle.
- * @param scrollBehavior    Scroll behaviour of the top bar.
+ * @param scrollBehavior    Scroll behavior of the top bar.
  *
  * @author Jonatan Wincent (c22jwt@cs.umu.se)
  */
